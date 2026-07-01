@@ -74,46 +74,32 @@ function displayLevels(levelArray) {
         const card = document.createElement("div");
         card.className = "levelCard";
 
-        card.innerHTML = `
-            <img class="thumbnail" src="${level.thumbnail}" alt="${level.name}">
+const yellow = level.position >= 75 && level.position <= 150;
 
-            <div class="info">
+card.innerHTML = `
 
-                <div class="position">#${level.position}</div>
+<img
+class="thumbnail"
+src="${level.thumbnail}"
+>
 
-                <div class="levelName">${level.name}</div>
+<div class="info">
 
-                <div class="creator">
-                    Creator: ${level.creator}
-                </div>
+<div class="rank ${yellow ? "rankYellow" : ""}">
+[${level.position}] - <span class="levelName">${level.name}</span>
+</div>
 
-                <div class="verifier">
-                    Verifier: ${level.verifier}
-                </div>
+<div class="creator">
+Creator: ${level.creator}
+</div>
 
-                <div class="levelID">
-                    ID: ${level.id}
-                </div>
+<div class="verifier">
+Verifier: ${level.verifier}
+</div>
 
-                <div class="difficulty ${difficultyClass(level.difficulty)}">
-                    ${level.difficulty}
-                </div>
+</div>
 
-                <div class="rating">
-                    ⭐ ${level.rating}/10
-                </div>
-
-                <br>
-
-                <a class="watch"
-                   href="${level.video}"
-                   target="_blank">
-                    Watch Verification
-                </a>
-
-            </div>
-        `;
-
+`;
         // Open level page when clicking the card
         card.onclick = () => {
 
